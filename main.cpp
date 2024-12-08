@@ -14,12 +14,16 @@ int main(){
     std::cin >> path;
     std::cout << "Raw files will be saved in the 'Images' folder\n";
     image IMG(width,height,path);
-    std::string output_rotate, output_gauss;
-    output_rotate = "Images/rotatedIMG.raw";
-    output_gauss = "Images/gaussIMG.raw";
+    std::string filepathRotate;
+    std::string filepathGauss;
+    filepathRotate = "Images/rotatedIMG.raw";
+    filepathGauss = "Images/gaussIMG.raw";
     IMG.readImage();
-    IMG.rotateImage();
-    IMG.saveToRaw(output_rotate);
-    IMG.gauss();
-    IMG.saveToRaw(output_gauss);
+    IMG.vecToMat();
+    IMG.matRotate();
+    IMG.matToVec();
+    IMG.saveToRaw(filepathRotate);
+    IMG.gauss(11);
+    IMG.matToVec();
+    IMG.saveToRaw(filepathGauss);
 }

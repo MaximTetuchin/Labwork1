@@ -20,12 +20,15 @@ class image{
     //! Methods
     public:
         void readImage();
-        void rotateImage();
+        void matRotate();
         void gauss();
-        void add_pixels();
         void saveToRaw(std::string outputFileName);
+        void vecToMat();
+        void matToVec();
+        void gauss(int kernelSize);
 
-        void checkMatrix(); //* Debug function
+        //* Debug Methods
+        void getLen();
 
     //! Variables
     private:
@@ -33,6 +36,7 @@ class image{
         int _height;
         std::string _path;
         double _sigma = 10;
-        uint8_t* _imageMatrix;
+        std::vector<uint8_t> _imageVector;
+        std::vector<std::vector<uint8_t>> _imageMatrix;
 };  
 #endif
