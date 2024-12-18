@@ -18,7 +18,7 @@ Editing a raw img.
 make
 ## Run
 ./Labwork1\
-With 9x9 core and valgring **leak-check** code ends in 5 minutes.\
+With 9x9 core and valgrind **leak-check** code ends in 5 minutes.\
 Without valgrind (and 19x19 core) code ends in a minute
 ## Clear
 make clean
