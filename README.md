@@ -1,6 +1,6 @@
 # Labwork1
 C++ Labwork. Level: B
-## Attention!!!!!!!!!!!!!!!!1
+## Attention!!!!!!!!!!!!!!!!
 Уровень B. Дано растровое изображение «оттенки серого», глубина изображения 8 бит, в 
 **«сыром» виде** (файл содержит только интенсивности пикселей, пиксели записаны построчно,
 размеры изображения указаны)
@@ -14,6 +14,7 @@ Editing a raw img.
 ## Build
 make
 ## Run
-./Labwork1
+./Labwork1\
+Without valgrind code ends in a minute
 ## Clear
 make clean
