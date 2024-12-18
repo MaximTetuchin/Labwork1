@@ -23,7 +23,7 @@ int main(){
     IMG.matRotate();
     IMG.matToVec();
     IMG.saveToRaw(filepathRotate);
-    IMG.gauss(11);
+    IMG.gauss(9);
     IMG.matToVec();
     IMG.saveToRaw(filepathGauss);
 }
