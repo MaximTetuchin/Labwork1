@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -pthread -Werror -Wpedantic -Wall
+CXXFLAGS = -std=c++14 -pthread -Werror -Wpedantic -Wall
 TARGET = Labwork1
 EXPERIMENT_TARGET = experiment
 
