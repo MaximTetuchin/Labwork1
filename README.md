@@ -15,7 +15,9 @@ st128993@student.spbu.ru | tetuhin@inbox.ru
 LabWork1.\
 Editing a raw img.
 ## Build
-make
+make\
+
+make run-experiment
 ## Run
 ./Labwork1\
 With 9x9 core and valgrind **leak-check** code ends in 5 minutes.\

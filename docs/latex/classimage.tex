@@ -1,0 +1,203 @@
+\doxysection{image Class Reference}
+\hypertarget{classimage}{}\label{classimage}\index{image@{image}}
+
+
+Class for image processing operations including rotation and Gaussian blur.  
+
+
+
+
+{\ttfamily \#include $<$image\+Function.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classimage_a06fb96e5aa2bc1abc74a62f213ae87f0}{image}} (int width, int height, std\+::string path)
+\begin{DoxyCompactList}\small\item\em Constructor for image class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classimage_aee5ce698112b4d75cfc1b2a3b354c1c5}{\texorpdfstring{$\sim$}{\string~}image}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for image class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classimage_ae138f312deb18173c247780d1c51eee5}{read\+Image}} ()
+\begin{DoxyCompactList}\small\item\em Reads image data from file into vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classimage_afb7f2910524559eeb68e25f3c9ab4ae6}{mat\+Rotate}} ()
+\begin{DoxyCompactList}\small\item\em Rotates the image 90 degrees clockwise. \end{DoxyCompactList}\item 
+\Hypertarget{classimage_a3e6f76872444994340b284dfb954a861}\label{classimage_a3e6f76872444994340b284dfb954a861} 
+void {\bfseries gauss} ()
+\begin{DoxyCompactList}\small\item\em Applies Gaussian blur with default kernel size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classimage_a3216b756c781d2c44595f9d6aae6a318}{save\+To\+Raw}} (std\+::string output\+File\+Name)
+\begin{DoxyCompactList}\small\item\em Saves processed image to RAW format file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classimage_adc04b0af1757b10221204bf1ca679f5c}{vec\+To\+Mat}} ()
+\begin{DoxyCompactList}\small\item\em Converts 1D vector representation to 2D matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classimage_affa84e951d5539d0ca456a296e449a7b}{mat\+To\+Vec}} ()
+\begin{DoxyCompactList}\small\item\em Converts 2D matrix representation back to 1D vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classimage_aec4dd9eceb1c60dd8b62add161fd953b}{gauss}} (int kernel\+Size)
+\begin{DoxyCompactList}\small\item\em Applies Gaussian blur with specified kernel size (single-\/threaded) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classimage_a89d104b29dddc1c2e554b2a3b165a6f1}{gauss}} (int kernel\+Size, unsigned int num\+Threads)
+\begin{DoxyCompactList}\small\item\em Applies Gaussian blur with specified kernel size and thread count (multi-\/threaded) \end{DoxyCompactList}\item 
+\Hypertarget{classimage_ab6732b34f94cab64778957697b2af68d}\label{classimage_ab6732b34f94cab64778957697b2af68d} 
+void {\bfseries get\+Len} ()
+\begin{DoxyCompactList}\small\item\em Debug method to print matrix dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for image processing operations including rotation and Gaussian blur. 
+
+This class provides functionality to read, process, and save RAW format images. It supports image rotation and Gaussian blur filtering with single or multi-\/threaded processing. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classimage_a06fb96e5aa2bc1abc74a62f213ae87f0}\label{classimage_a06fb96e5aa2bc1abc74a62f213ae87f0} 
+\index{image@{image}!image@{image}}
+\index{image@{image}!image@{image}}
+\doxysubsubsection{\texorpdfstring{image()}{image()}}
+{\footnotesize\ttfamily image\+::image (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+Constructor for image class. 
+
+Constructs an image object with specified parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the image in pixels \\
+\hline
+{\em height} & Height of the image in pixels \\
+\hline
+{\em path} & File path to the source image\\
+\hline
+{\em width} & Image width in pixels \\
+\hline
+{\em height} & Image height in pixels \\
+\hline
+{\em path} & Path to source image file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classimage_aee5ce698112b4d75cfc1b2a3b354c1c5}\label{classimage_aee5ce698112b4d75cfc1b2a3b354c1c5} 
+\index{image@{image}!````~image@{\texorpdfstring{$\sim$}{\string~}image}}
+\index{````~image@{\texorpdfstring{$\sim$}{\string~}image}!image@{image}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}image()}{\string~image()}}
+{\footnotesize\ttfamily image\+::\texorpdfstring{$\sim$}{\string~}image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for image class. 
+
+Destructor clears allocated memory. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classimage_aec4dd9eceb1c60dd8b62add161fd953b}\label{classimage_aec4dd9eceb1c60dd8b62add161fd953b} 
+\index{image@{image}!gauss@{gauss}}
+\index{gauss@{gauss}!image@{image}}
+\doxysubsubsection{\texorpdfstring{gauss()}{gauss()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void image\+::gauss (\begin{DoxyParamCaption}\item[{int}]{kernel\+Size }\end{DoxyParamCaption})}
+
+
+
+Applies Gaussian blur with specified kernel size (single-\/threaded) 
+
+Applies Gaussian blur filter with specified kernel size (single-\/threaded)
+
+
+\begin{DoxyParams}{Parameters}
+{\em kernel\+Size} & Size of the Gaussian kernel (must be odd)\\
+\hline
+{\em kernel\+Size} & Size of Gaussian kernel (must be odd number)\\
+\hline
+\end{DoxyParams}
+Creates Gaussian kernel, normalizes it, and applies convolution to image matrix. Uses sigma value stored in class member \+\_\+sigma. \Hypertarget{classimage_a89d104b29dddc1c2e554b2a3b165a6f1}\label{classimage_a89d104b29dddc1c2e554b2a3b165a6f1} 
+\index{image@{image}!gauss@{gauss}}
+\index{gauss@{gauss}!image@{image}}
+\doxysubsubsection{\texorpdfstring{gauss()}{gauss()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void image\+::gauss (\begin{DoxyParamCaption}\item[{int}]{kernel\+Size,  }\item[{unsigned int}]{num\+Threads }\end{DoxyParamCaption})}
+
+
+
+Applies Gaussian blur with specified kernel size and thread count (multi-\/threaded) 
+
+Multi-\/threaded Gaussian blur implementation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em kernel\+Size} & Size of the Gaussian kernel (must be odd) \\
+\hline
+{\em num\+Threads} & Number of threads to use for processing\\
+\hline
+{\em kernel\+Size} & Size of Gaussian kernel (must be odd) \\
+\hline
+{\em num\+Threads} & Number of threads to use for processing\\
+\hline
+\end{DoxyParams}
+Divides image processing among specified number of threads and measures performance compared to single-\/threaded version. \Hypertarget{classimage_afb7f2910524559eeb68e25f3c9ab4ae6}\label{classimage_afb7f2910524559eeb68e25f3c9ab4ae6} 
+\index{image@{image}!matRotate@{matRotate}}
+\index{matRotate@{matRotate}!image@{image}}
+\doxysubsubsection{\texorpdfstring{matRotate()}{matRotate()}}
+{\footnotesize\ttfamily void image\+::mat\+Rotate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Rotates the image 90 degrees clockwise. 
+
+Rotates image 90 degrees clockwise using matrix transformation.
+
+Swaps image dimensions after rotation. Uses move semantics for efficiency. \Hypertarget{classimage_affa84e951d5539d0ca456a296e449a7b}\label{classimage_affa84e951d5539d0ca456a296e449a7b} 
+\index{image@{image}!matToVec@{matToVec}}
+\index{matToVec@{matToVec}!image@{image}}
+\doxysubsubsection{\texorpdfstring{matToVec()}{matToVec()}}
+{\footnotesize\ttfamily void image\+::mat\+To\+Vec (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Converts 2D matrix representation back to 1D vector. 
+
+Resizes the vector to accommodate all pixel data before conversion. \Hypertarget{classimage_ae138f312deb18173c247780d1c51eee5}\label{classimage_ae138f312deb18173c247780d1c51eee5} 
+\index{image@{image}!readImage@{readImage}}
+\index{readImage@{readImage}!image@{image}}
+\doxysubsubsection{\texorpdfstring{readImage()}{readImage()}}
+{\footnotesize\ttfamily void image\+::read\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads image data from file into vector. 
+
+Reads image data from binary file into 1D vector.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if file cannot be opened \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classimage_a3216b756c781d2c44595f9d6aae6a318}\label{classimage_a3216b756c781d2c44595f9d6aae6a318} 
+\index{image@{image}!saveToRaw@{saveToRaw}}
+\index{saveToRaw@{saveToRaw}!image@{image}}
+\doxysubsubsection{\texorpdfstring{saveToRaw()}{saveToRaw()}}
+{\footnotesize\ttfamily void image\+::save\+To\+Raw (\begin{DoxyParamCaption}\item[{std\+::string}]{output\+File\+Name }\end{DoxyParamCaption})}
+
+
+
+Saves processed image to RAW format file. 
+
+Saves processed image data to RAW binary file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+File\+Name} & Output file path\\
+\hline
+{\em output\+File\+Name} & Path for output file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classimage_adc04b0af1757b10221204bf1ca679f5c}\label{classimage_adc04b0af1757b10221204bf1ca679f5c} 
+\index{image@{image}!vecToMat@{vecToMat}}
+\index{vecToMat@{vecToMat}!image@{image}}
+\doxysubsubsection{\texorpdfstring{vecToMat()}{vecToMat()}}
+{\footnotesize\ttfamily void image\+::vec\+To\+Mat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Converts 1D vector representation to 2D matrix. 
+
+After conversion, the vector memory is cleared to optimize memory usage. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{imageFunction_8hpp}{image\+Function.\+hpp}}\item 
+experiment.\+cpp\item 
+\mbox{\hyperlink{imageFunction_8cpp}{image\+Function.\+cpp}}\end{DoxyCompactItemize}

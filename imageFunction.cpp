@@ -1,41 +1,64 @@
-/* Maxim Tetuchin tetuhin@inbox.ru | st128993@student.spbu.ru
-Lab work 1
-*/
+/**
+ * @file imageFunction.cpp
+ * @brief Image processing class implementation
+ * @author Maxim Tetuchin
+ * @date 2025
+ * @version 1.0
+ */
+
 #include "imageFunction.hpp"
-//! Constructor
-image::image(int width,int height, std::string path):
+
+/**
+ * @brief Constructs an image object with specified parameters
+ * @param width Image width in pixels
+ * @param height Image height in pixels
+ * @param path Path to source image file
+ */
+image::image(int width, int height, std::string path):
     _width(width),
     _height(height),   
     _path(path){    
     _imageVector = std::vector<uint8_t>(_width * _height);
     _imageMatrix = std::vector<std::vector<uint8_t>>(_height, std::vector<uint8_t>(_width, 0));
-    }
+}
 
-//! Destructor
+/**
+ * @brief Destructor clears allocated memory
+ */
 image::~image() {
     _imageVector.clear();
     _imageMatrix.clear();
 }
 
-//^ Methods
-//! 1D Array method
-void image::readImage(){ //* Reading the input image
+/**
+ * @brief Reads image data from binary file into 1D vector
+ * @throws std::runtime_error if file cannot be opened
+ */
+void image::readImage(){
     std::ifstream openedImage(_path, std::ios::binary);
     if (!openedImage){
-        std::cerr << "Check your filepath" << std::endl; //! Error
+        std::cerr << "Check your filepath" << std::endl;
+        throw std::runtime_error("Failed to open image file");
     }
     openedImage.read(reinterpret_cast<char*>(_imageVector.data()),_width*_height);
     openedImage.close();
 }
 
-//! 1D Array method
-void image::saveToRaw(std::string outputFileName){ //* Saving the RAW image 
+/**
+ * @brief Saves processed image data to RAW binary file
+ * @param outputFileName Path for output file
+ */
+void image::saveToRaw(std::string outputFileName){
     std::ofstream matrixOutput (outputFileName,std::ios::binary);
     matrixOutput.write(reinterpret_cast<char*>(_imageVector.data()),(_height*_width));
     _imageVector.clear();
 }
 
-//! 1D -> 2D method
+/**
+ * @brief Converts 1D vector representation to 2D matrix
+ * 
+ * After conversion, the vector memory is cleared to optimize memory usage.
+ */
 void image::vecToMat(){ 
     for (int i = 0; i < _height; ++i) {
         for (int j = 0; j < _width; ++j) {
@@ -44,23 +67,27 @@ void image::vecToMat(){
     }
     _imageVector.clear();
     _imageVector.shrink_to_fit();
-    //! Vector's memory clear
 }
 
-//! 2D -> 1D method
+/**
+ * @brief Converts 2D matrix representation back to 1D vector
+ * 
+ * Resizes the vector to accommodate all pixel data before conversion.
+ */
 void image::matToVec(){
-    _imageVector.resize(_height * _width); //! Adding mem.
-     _imageVector.resize(_height * _width);
+    _imageVector.resize(_height * _width);
     for (int i = 0; i < _height; ++i) {
         for (int j = 0; j < _width; ++j) {
             _imageVector[i * _width + j] = _imageMatrix[i][j];
         }
     }
 }
-//! Attention!!!!
-//! After using the method above we have imageMatrix and imageVector in memory.
 
-//! 2D method
+/**
+ * @brief Rotates image 90 degrees clockwise using matrix transformation
+ * 
+ * Swaps image dimensions after rotation. Uses move semantics for efficiency.
+ */
 void image::matRotate(){
     std::vector<std::vector<uint8_t>> _rotatedMat = 
         std::vector<std::vector<uint8_t>>(_width, std::vector<uint8_t>(_height, 0));
@@ -73,7 +100,13 @@ void image::matRotate(){
     std::swap(_height,_width);
 }
 
-//! 2D method
+/**
+ * @brief Applies Gaussian blur filter with specified kernel size (single-threaded)
+ * @param kernelSize Size of Gaussian kernel (must be odd number)
+ * 
+ * Creates Gaussian kernel, normalizes it, and applies convolution to image matrix.
+ * Uses sigma value stored in class member _sigma.
+ */
 void image::gauss(int kernelSize) {
     if (kernelSize % 2 == 0) {
         std::cerr << "Kernel size must be an odd number." << std::endl;
@@ -84,17 +117,16 @@ void image::gauss(int kernelSize) {
     std::vector<std::vector<double>> kernel(kernelSize, std::vector<double>(kernelSize, 0));
     double sum = 0.0;
 
-    //! Kernel fill
+    // Fill kernel with Gaussian values
     for (int x = -halfSize; x <= halfSize; ++x) {
         for (int y = -halfSize; y <= halfSize; ++y) {
             double value = exp(-(x * x + y * y) / (2 * _sigma * _sigma)) / (2 * M_PI * _sigma * _sigma);
-            //^ M_Pi - constant for pi
             kernel[x + halfSize][y + halfSize] = value;
             sum += value;
         }
     }
 
-    //! Kernel normalization
+    // Normalize kernel
     for (int i = 0; i < kernelSize; ++i) {
         for (int j = 0; j < kernelSize; ++j) {
             kernel[i][j] /= sum;
@@ -125,8 +157,9 @@ void image::gauss(int kernelSize) {
     _imageMatrix = std::move(blurredImage);
 }
 
-
-//* Debug methods
+/**
+ * @brief Debug method to print matrix dimensions
+ */
 void image::getLen(){
-    std::cout<<_imageMatrix.size()<<"\n";
+    std::cout << _imageMatrix.size() << "\n";
 }

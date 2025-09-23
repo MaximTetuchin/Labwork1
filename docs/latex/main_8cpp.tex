@@ -1,0 +1,77 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Main application for multi-\/threaded image processing.  
+
+
+{\ttfamily \#include "{}image\+Function.\+hpp"{}}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8cpp_ad25f665de4dc07971d028e82b96c30d7}\label{main_8cpp_ad25f665de4dc07971d028e82b96c30d7} 
+std\+::atomic$<$ int $>$ {\bfseries image\+Counter} (0)
+\begin{DoxyCompactList}\small\item\em Atomic counter for processed images. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a0aba994df2ff492d8a96c5ff554d203c}{process\+Image}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classimage}{image}} $>$ img)
+\begin{DoxyCompactList}\small\item\em Processes a single image with rotation and Gaussian blur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main function for multi-\/image processing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main application for multi-\/threaded image processing. 
+
+\begin{DoxyAuthor}{Author}
+Maxim Tetuchin 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Lab work 1\+: Multithreaded version for processing multiple images 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main function for multi-\/image processing. 
+
+\begin{DoxyReturn}{Returns}
+int Exit status (0 for success)
+\end{DoxyReturn}
+Prompts user for number of images and their parameters, then processes them concurrently using multiple threads. \Hypertarget{main_8cpp_a0aba994df2ff492d8a96c5ff554d203c}\label{main_8cpp_a0aba994df2ff492d8a96c5ff554d203c} 
+\index{main.cpp@{main.cpp}!processImage@{processImage}}
+\index{processImage@{processImage}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{processImage()}{processImage()}}
+{\footnotesize\ttfamily void process\+Image (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classimage}{image}} $>$}]{img }\end{DoxyParamCaption})}
+
+
+
+Processes a single image with rotation and Gaussian blur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & Unique pointer to image object to process\\
+\hline
+\end{DoxyParams}
+Reads image, rotates it, applies Gaussian blur, and saves both results. Each processed image gets a unique ID from the atomic counter. 
