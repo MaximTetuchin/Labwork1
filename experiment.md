@@ -33,14 +33,14 @@ The goal of this lab work is to develop a multithreaded version of an image proc
 ## Testing Results
 
 * 8 images of the same size were used for testing.
-* Performance was compared between single-threaded and multithreaded versions on an 8-core CPU.
+* Performance was compared between single-threaded and multithreaded versions on an 4-core CPU.
 
 **Execution Time:**
 
 | Program Version           | Average Time for 8 Images |
 | ------------------------- | ------------------------- |
 | Single-threaded           | ~12.0 seconds              |
-| Multithreaded (8 threads) | ~3.0 seconds               |
+| Multithreaded (4 threads) | ~3.0 seconds               |
 
 **Conclusion:**
 The multithreaded version achieved an average **4× speedup** compared to the single-threaded version. This is because image processing for each file runs independently on separate CPU cores.
